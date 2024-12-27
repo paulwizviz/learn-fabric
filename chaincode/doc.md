@@ -4,18 +4,18 @@ This is the term used in Hyperledger Fabric for the smart contracts that define 
 
 ## Chaincode V1 vs V2
 
-| Aspect | V1 (Shim API) | v2 (Contract API) |
-| --- | --- | --- |
-| Core Methods | Requires Init and Invoke methods. | Does not require Init or Invoke. Uses modular transaction functions. |
-| Method Routing | Developer manually routes logic within Invoke method. | Automatic routing to defined transaction functions by Fabric runtime. |
-| API | Uses shim API (shim.ChaincodeStubInterface). | Uses Contract API (contractapi.TransactionContextInterface). |
-| Transaction Functions | Logic is split manually into helper functions called by Invoke. | Each business logic operation is a separate transaction function. |
-| Initialisation | Performed in Init method during chaincode instantiation. | Handled by a transaction function (e.g., InitLedger). |
-| Function Registration | No explicit registration; functions are routed via Invoke. | Transaction functions are defined and discovered automatically. |
-| Error Handling | Return responses (shim.Success or shim.Error) explicitly. | Uses Go error type for error handling, improving readability. |
-| Serialisation | Developer manages serialization (e.g., using JSON encoding). | Same approach, but simplified by modern Go libraries. |
-| State Queries | Performed using stub methods like GetState, PutState. | Similar, but integrated with the Contract API’s context. |
-| Development Simplicity | Requires more boilerplate for method routing and setup. |Simplified setup with clear modularity and abstraction. |
+| **Aspect**                  | **Fabric v1.x (Shim API)**                                           | **Fabric v2.x (Contract API)**                                       |
+|-----------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------|
+| **Core Methods**            | Requires `Init` and `Invoke` methods.                             | Does not require `Init` or `Invoke`. Uses modular transaction functions. |
+| **Method Routing**          | Developer manually routes logic within `Invoke` method.           | Automatic routing to defined transaction functions by Fabric runtime. |
+| **API**                     | Uses **shim API** (`shim.ChaincodeStubInterface`).                | Uses **Contract API** (`contractapi.TransactionContextInterface`).    |
+| **Transaction Functions**   | Logic is split manually into helper functions called by `Invoke`. | Each business logic operation is a separate transaction function.    |
+| **Initialization**          | Performed in `Init` method during chaincode instantiation.         | Handled by a transaction function (e.g., `InitLedger`).              |
+| **Function Registration**   | No explicit registration; functions are routed via `Invoke`.       | Transaction functions are defined and discovered automatically.       |
+| **Error Handling**          | Return responses (`shim.Success` or `shim.Error`) explicitly.     | Uses Go `error` type for error handling, improving readability.      |
+| **Serialization**           | Developer manages serialization (e.g., using JSON encoding).      | Same approach, but simplified by modern Go libraries.                |
+| **State Queries**           | Performed using `stub` methods like `GetState`, `PutState`.       | Similar, but integrated with the Contract API’s context.             |
+| **Development Simplicity**  | Requires more boilerplate for method routing and setup.           | Simplified setup with clear modularity and abstraction.              |
 
 Fabric V1.x (Shim API)
 
