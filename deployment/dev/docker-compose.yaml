@@ -13,6 +13,7 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
+      - ./config:/etc/hyperledger/fabric/config
       - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
       - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls:/var/hyperledger/orderer/tls
       - ./channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
@@ -40,22 +41,24 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: peer node start
     volumes:
+      - ./config:/etc/hyperledger/fabric/config
       - ./crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
       - ./crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls:/etc/hyperledger/fabric/tls
       - ./data/peer:/var/hyperledger/production
-    depends_on:
-      - couchdb
     ports:
       - 7051:7051
       - 7052:7052
       - 7053:7053
     networks:
       - local
+    depends_on:
+      - couchdb      
 
   # CouchDB Service for State Database
   couchdb:
     image: couchdb:3.2
     container_name: couchdb
+    platform: linux/amd64
     environment:
       - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=adminpw

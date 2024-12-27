@@ -5,7 +5,9 @@ This project contains my analysis with working examples to dissect the inner wor
 ## Topics
 
 * [Application Development](./apps/doc.md)
+* [Architecture](./arch/doc.md)
 * [Chaincode](./chaincode/doc.md)
+* [Deployment](./deployment/doc.md)
 
 
 ## Disclaimer

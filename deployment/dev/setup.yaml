@@ -1,0 +1,13 @@
+services:
+
+  # CLI for Interacting with the Network
+  setup:
+    image: hyperledger/fabric-tools:2.5
+    container_name: setup
+    working_dir: /
+    command: /scripts/setup.sh
+    volumes:
+      - ./config:/config
+      - ./crypto-config:/crypto-config
+      - ./channel-artifacts:/channel-artifacts
+      - ./scripts:/scripts

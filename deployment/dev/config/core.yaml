@@ -1,0 +1,7 @@
+peer:
+  id: Peer0
+  networkId: dev-network
+  fileSystemPath: /var/hyperledger/production
+  gossip:
+    useLeaderElection: true
+    orgLeader: false
