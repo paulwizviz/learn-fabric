@@ -1,6 +1,6 @@
 # Overview
 
-This project contains my analysis with working examples to dissect the inner workings and techniques to build applications based on Ethereum.
+This project contains my analysis with working examples to dissect the inner workings and techniques to build applications based on Hyperledger Fabric.
 
 ## Topics
 
